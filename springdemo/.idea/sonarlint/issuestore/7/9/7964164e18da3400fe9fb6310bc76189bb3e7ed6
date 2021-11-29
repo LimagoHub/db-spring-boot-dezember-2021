@@ -1,0 +1,14 @@
+
+V	java:S125"<This block of commented-out lines of code should be removed.(¤×şÍûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(³†ù»
+S	java:S106&"9Replace this use of System.out or System.err by a logger.(ãâÆËùÿÿÿÿ
+S	java:S106'"9Replace this use of System.out or System.err by a logger.(êœì™ùÿÿÿÿ
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(ÖĞ½øÿÿÿÿ
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(êœì™ùÿÿÿÿ
+N	java:S106D"9Replace this use of System.out or System.err by a logger.(ÂŠªë
+q
+java:S1128"TRemove this unused import 'org.springframework.beans.factory.config.BeanDefinition'.(µ®8âéØÚÖ/
+e
+java:S1128"HRemove this unused import 'org.springframework.context.annotation.Lazy'.(İ·­æ8äéØÚÖ/
+k
+java:S1128"IRemove this unused import 'org.springframework.context.annotation.Scope'.(şè®€ÿÿÿÿÿ8äéØÚÖ/
