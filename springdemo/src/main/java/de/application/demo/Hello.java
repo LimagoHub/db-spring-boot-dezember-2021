@@ -1,10 +1,26 @@
 package de.application.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component // stellt Komponente unter Verwaltung von Spring
+//@Scope(BeanDefinition.SCOPE_SINGLETON)
+//@Lazy
 public class Hello implements AutoCloseable{
 
 
     private String message = "Hallo Welt";
-    private Transformer transformer;
+
+    private final Transformer transformer;
+
 
 //    public void setTransformer(Transformer transformer) {
 //        this.transformer = transformer;
@@ -16,7 +32,8 @@ public class Hello implements AutoCloseable{
 //        System.out.println(message);
 //    }
 
-    public Hello(Transformer transformer) {
+    @Autowired // löst Abhängigkeiten automatisch auf (Vor. alle Komponenten stehen unter der Verwaltung von Spring)
+    public Hello(@Qualifier("upper") final Transformer transformer) {
         this.transformer = transformer;
         System.out.println("Hier ist Hello");
         System.out.println(transformer.transform(message));
@@ -26,10 +43,12 @@ public class Hello implements AutoCloseable{
         return message;
     }
 
+    @Value("Hello Universe")
     public void setMessage(String message) {
         this.message = message;
     }
 
+    @PostConstruct // init-method
     public void init() {
         System.out.println("Post Construct");
         System.out.println(transformer.transform(message));
@@ -43,6 +62,7 @@ public class Hello implements AutoCloseable{
         return sb.toString();
     }
 
+    @PreDestroy
     @Override
     public void close() throws Exception {
         System.out.println(transformer.transform("Und tschuess!"));

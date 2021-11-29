@@ -6,19 +6,11 @@
         default-init-method="init"
 >
 
-    <!-- context:annotation-config/>
+    <context:annotation-config/>
 
-    <context:component-scan base-package="de"/ -->
+    <context:component-scan base-package="de"/>
 
 
-    <bean id="hello" class="de.application.demo.Hello" scope="singleton" lazy-init="true" destroy-method="close" autowire="constructor">
-        <property name="message" value="Hello Universe"/>
-        <!-- property name="transformer" ref="transformer"/ -->
-        <!-- constructor-arg ref="transformer" /-->
-    </bean>
 
-    <bean id="upper" class="de.application.demo.ToUpper" />
-    <bean id="transformer" class="de.application.demo.ToLower" />
-    <!-- bean id="calculator" class="de.application.math.CalculatorImpl" /-->
 
 </beans>
