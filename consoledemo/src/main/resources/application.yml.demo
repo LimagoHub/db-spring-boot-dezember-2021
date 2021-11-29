@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: WARN
+    org:
+      springframework:
+        web: WARN
+        hibernate: WARN
+
+
+spring:
+    main:
+      banner-mode: off
