@@ -1,6 +1,7 @@
 package de.db.webapp.controllers;
 
 import de.db.webapp.controllers.dtos.PersonDTO;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.MediaTypeEditor;
@@ -18,6 +19,12 @@ import java.util.UUID;
 @RequestMapping("/v1/personen")
 public class PersonenController {
 
+
+    @ApiResponse(responseCode = "200", description = "Person wurde gefunden")
+    @ApiResponse(responseCode = "404", description = "Person wurde nicht gefunden")
+    @ApiResponse(responseCode = "400", description = "Bad Request" )
+    @ApiResponse(responseCode = "500", description = "Interner Serverfehler")
+
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PersonDTO> findPersonByID(@PathVariable String id) {
         Optional<PersonDTO>  optional;
@@ -30,6 +37,11 @@ public class PersonenController {
         return ResponseEntity.of(optional);
     }
 
+
+    @ApiResponse(responseCode = "200", description = "Personliste wurde erstellt")
+
+    @ApiResponse(responseCode = "400", description = "Bad Request" )
+    @ApiResponse(responseCode = "500", description = "Interner Serverfehler")
     @GetMapping(path="", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<PersonDTO>> findAll(@RequestParam(required = false, defaultValue = "") String vorname, @RequestParam(required = false, defaultValue = "") String nachname) {
         System.out.println(String.format("Vorname ist %s und Nachname = %s", vorname, nachname));
@@ -38,6 +50,10 @@ public class PersonenController {
         return ResponseEntity.ok(liste);
     }
 
+    @ApiResponse(responseCode = "200", description = "Person wurde geloescht")
+    @ApiResponse(responseCode = "404", description = "Person wurde nicht gefunden")
+    @ApiResponse(responseCode = "400", description = "Bad Request" )
+    @ApiResponse(responseCode = "500", description = "Interner Serverfehler")
     @DeleteMapping(path="/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
         if(id.startsWith("1"))
@@ -45,6 +61,12 @@ public class PersonenController {
         else
             return ResponseEntity.notFound().build();
     }
+
+
+    @ApiResponse(responseCode = "200", description = "Person wurde geändert")
+    @ApiResponse(responseCode = "201", description = "Person wurde erstellt")
+    @ApiResponse(responseCode = "400", description = "Bad Request" )
+    @ApiResponse(responseCode = "500", description = "Interner Serverfehler")
 
     @PutMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> saveOrUpdateIdempotent(@Valid @RequestBody PersonDTO dto) {
