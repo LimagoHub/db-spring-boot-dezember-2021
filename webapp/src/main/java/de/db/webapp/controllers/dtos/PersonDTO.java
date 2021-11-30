@@ -25,5 +25,11 @@ public class PersonDTO {
     @NotNull
     @Size(min = 2, max = 30)
     private String nachname;
+    @Size(min = 5, max = 6)
+    private String plz;
+    @Size(min = 2, max = 30)
+    private String ort;
+    @Size(min = 2, max = 30)
+    private String strasse;
 
 }
