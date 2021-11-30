@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/demo") // Virtueller Ordner
 //@RequestScope
@@ -21,6 +23,11 @@ public class DemoController {
     @GetMapping(path="/gruss")
     public String gruss() {
        return "Hallo Rest";
+    }
+
+    @GetMapping(path="/uuid")
+    public String uuid() {
+        return UUID.randomUUID().toString();
     }
 
     @GetMapping(path="/person", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
