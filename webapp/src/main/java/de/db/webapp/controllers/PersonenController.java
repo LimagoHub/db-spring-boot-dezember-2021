@@ -48,16 +48,14 @@ public class PersonenController {
     @Operation(summary = "Suche alle Personen")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Personenliste wurde erstellt", content = { @Content(mediaType = "application/json") }),
-           // @ApiResponse(responseCode = "400", description = "Falsche ID gesendet", content = @Content),
-           // @ApiResponse(responseCode = "404", description = "Person wurde nicht gefunden", content = @Content) ,
             @ApiResponse(responseCode = "500", description = "Interner Serverfehler", content = @Content)
     })
     @GetMapping(path="", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<PersonDTO>> findAll(
-            @Parameter(description = "Vorname der Person")
-            @RequestParam(required = false, defaultValue = "") String vorname,
-            @Parameter(description = "Nachname der Person")
-            @RequestParam(required = false, defaultValue = "") String nachname
+//            @Parameter(description = "Vorname der Person")
+//            @RequestParam(required = false, defaultValue = "") String vorname,
+//            @Parameter(description = "Nachname der Person")
+//            @RequestParam(required = false, defaultValue = "") String nachname
     )  throws PersonenServiceException {
 
 

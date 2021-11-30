@@ -3,7 +3,6 @@ package de.db.webapp.controllers.mappers;
 import de.db.webapp.controllers.dtos.PersonDTO;
 import de.db.webapp.services.models.Person;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
 
 
 @Mapper(componentModel = "spring")
