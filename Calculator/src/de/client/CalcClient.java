@@ -10,6 +10,6 @@ public class CalcClient {
     }
 
     public void go() {
-        System.out.println(calculator.add(3,4));
+        System.out.println(calculator.sub(3,4));
     }
 }

@@ -8,6 +8,6 @@ public class CalculatorImpl implements Calculator {
     }
     @Override
     public double sub(double a, double b) {
-        return add( a, -b);
+        return this.add( a, -b);
     }
 }
