@@ -52,10 +52,10 @@ public class PersonenController {
     })
     @GetMapping(path="", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<PersonDTO>> findAll(
-//            @Parameter(description = "Vorname der Person")
-//            @RequestParam(required = false, defaultValue = "") String vorname,
-//            @Parameter(description = "Nachname der Person")
-//            @RequestParam(required = false, defaultValue = "") String nachname
+//NOSONAR            @Parameter(description = "Vorname der Person")
+//NOSONAR            @RequestParam(required = false, defaultValue = "") String vorname,
+//NOSONAR            @Parameter(description = "Nachname der Person")
+//NOSONAR            @RequestParam(required = false, defaultValue = "") String nachname
     )  throws PersonenServiceException {
 
 

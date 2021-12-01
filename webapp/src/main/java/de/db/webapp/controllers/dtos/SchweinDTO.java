@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,23 +15,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @AllArgsConstructor
 @Builder
 @XmlRootElement
-public class PersonDTO {
+public class SchweinDTO {
 
     @NotNull
     @Size(min = 36, max = 36)
     private String id;
     @NotNull
     @Size(min = 2, max = 30)
-    private String vorname;
+    private String name;
     @NotNull
-    @Size(min = 2, max = 30)
-    private String nachname;
+    @DecimalMin(value="10", inclusive = true)
+    private int gewicht;
 
-    @Size(min = 5, max = 6)
-    private String plz;
-    @Size(min = 2, max = 30)
-    private String ort;
-    @Size(min = 2, max = 30)
-    private String strasse;
+
 
 }
