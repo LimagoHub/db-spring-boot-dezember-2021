@@ -1,6 +1,6 @@
 package de.db.webapp.services;
 
-public class PersonenServiceException extends Exception {
+public class PersonenServiceException extends ServiceException {
 
 
     public PersonenServiceException() {

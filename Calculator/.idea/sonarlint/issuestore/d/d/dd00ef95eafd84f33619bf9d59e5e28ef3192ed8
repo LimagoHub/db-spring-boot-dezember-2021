@@ -1,0 +1,5 @@
+
+Q	java:S125"<This block of commented-out lines of code should be removed.(íÂô
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Èˆ8éĞø±×/
+R
+java:S1128"5Remove this unused import 'de.math.CalculatorLogger'.(ÊÙÈÛ8×÷±×/

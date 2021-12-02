@@ -1,6 +1,6 @@
 package de.db.webapp.services;
 
-public class SchweineServiceException extends Exception {
+public class SchweineServiceException extends ServiceException {
     public SchweineServiceException() {
     }
 

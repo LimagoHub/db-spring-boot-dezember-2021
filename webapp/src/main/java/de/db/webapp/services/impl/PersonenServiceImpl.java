@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-
-@Slf4j
 public class PersonenServiceImpl implements PersonenService {
 
     private final PersonenRepository repo;
@@ -54,7 +52,7 @@ public class PersonenServiceImpl implements PersonenService {
             repo.save(mapper.convert(person));
             return result;
         } catch (RuntimeException e) {
-            log.error("Upps {}", e.getMessage(), e);
+            //log.error("Upps {}", e.getMessage(), e);
             throw new PersonenServiceException("Upps", e);
         }
     }
@@ -76,7 +74,7 @@ public class PersonenServiceImpl implements PersonenService {
             }
            return false;
         } catch (RuntimeException e) {
-            log.error("Upps {}", e.getMessage(), e);
+            //log.error("Upps {}", e.getMessage(), e);
             throw new PersonenServiceException("Upps", e);
         }
     }
@@ -86,7 +84,7 @@ public class PersonenServiceImpl implements PersonenService {
         try {
           return repo.findById(id).map(mapper::convert);
         } catch (RuntimeException e) {
-            log.error("Upps {}", e.getMessage(), e);
+            // log.error("Upps {}", e.getMessage(), e);
             throw new PersonenServiceException("Upps", e);
         }
     }
@@ -96,7 +94,7 @@ public class PersonenServiceImpl implements PersonenService {
         try {
             return mapper.convert(repo.findAll());
         } catch (RuntimeException e) {
-            log.error("Upps {}", e.getMessage(), e);
+            //log.error("Upps {}", e.getMessage(), e);
             throw new PersonenServiceException("Upps", e);
         }
     }
