@@ -34,7 +34,7 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(ServiceException.class)
-    public ResponseEntity<Object> handleGenericException(ServiceException ex, WebRequest request) {
+    public ResponseEntity<Object> handleServiceException(ServiceException ex, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("message", ex.getMessage());
@@ -54,6 +54,7 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
 
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
@@ -66,7 +67,7 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         List<String> errors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(x -> x.getDefaultMessage())
+                .map(x -> x.getField().toString() + ": " + x.getDefaultMessage())
                 .collect(Collectors.toList());
 
         body.put("errors", errors);

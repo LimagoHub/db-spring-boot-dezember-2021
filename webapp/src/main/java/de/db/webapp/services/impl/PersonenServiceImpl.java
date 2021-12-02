@@ -9,12 +9,16 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional(rollbackFor = PersonenServiceException.class,propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED)
 public class PersonenServiceImpl implements PersonenService {
 
     private final PersonenRepository repo;
@@ -40,6 +44,9 @@ public class PersonenServiceImpl implements PersonenService {
 
             Happy Day -> person to Repo
          */
+
+
+
     @Override
     public boolean speichernOderAendern(Person person) throws PersonenServiceException {
         try {
@@ -50,6 +57,7 @@ public class PersonenServiceImpl implements PersonenService {
 
             boolean result = repo.existsById(person.getId());
             repo.save(mapper.convert(person));
+
             return result;
         } catch (RuntimeException e) {
             //log.error("Upps {}", e.getMessage(), e);
