@@ -31,7 +31,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@Sql({"classpath:/create.sql", "classpath:/insert.sql"})
 @ExtendWith(SpringExtension.class)
-class PersonenControllerTest {
+class PersonenQueryControllerTest {
     
     @Autowired
     private TestRestTemplate resttemplate;

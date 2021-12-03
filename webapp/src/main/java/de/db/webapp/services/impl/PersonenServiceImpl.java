@@ -5,27 +5,18 @@ import de.db.webapp.services.PersonenService;
 import de.db.webapp.services.PersonenServiceException;
 import de.db.webapp.services.mappers.PersonMapper;
 import de.db.webapp.services.models.Person;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@Transactional(rollbackFor = PersonenServiceException.class,propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED)
+
 public class PersonenServiceImpl implements PersonenService {
 
     private final PersonenRepository repo;
     private final PersonMapper mapper;
     private final List<String> antipathen;
 
-    public PersonenServiceImpl(PersonenRepository repo, PersonMapper mapper,@Qualifier("antipathen") List<String> antipathen) {
+    public PersonenServiceImpl(PersonenRepository repo, PersonMapper mapper,List<String> antipathen) {
         this.repo = repo;
         this.mapper = mapper;
         this.antipathen = antipathen;
@@ -59,7 +50,10 @@ public class PersonenServiceImpl implements PersonenService {
             repo.save(mapper.convert(person));
 
             return result;
+
+            // Event
         } catch (RuntimeException e) {
+            // event
             //log.error("Upps {}", e.getMessage(), e);
             throw new PersonenServiceException("Upps", e);
         }

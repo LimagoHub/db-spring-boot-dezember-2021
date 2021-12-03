@@ -38,7 +38,7 @@ public class LoggerAspect {
        return proceedingJoinPoint.proceed();
     }
 
-    @Pointcut(value = "execution(public * de.db.webapp.controllers.PersonenController.*(..)) && args(personDTO,..)")
+    @Pointcut(value = "execution(public * de.db.webapp.controllers.PersonenQueryController.*(..)) && args(personDTO,..)")
     private void savePerson(PersonDTO personDTO) {}
 
     @Before("savePerson(personDTO)")
