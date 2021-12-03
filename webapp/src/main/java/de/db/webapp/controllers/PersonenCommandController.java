@@ -36,10 +36,10 @@ public class PersonenCommandController {
     @ApiResponse(responseCode = "400", description = "Bad Request" )
     @ApiResponse(responseCode = "500", description = "Interner Serverfehler")
     @DeleteMapping(path="/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id)  throws PersonenServiceException{
+    public void delete(@PathVariable String id)  {
         PersonDeletedEvent event = PersonDeletedEvent.builder().id(id).build();
         adapter.handle(event);
-        return ResponseEntity.ok().build();
+
      }
 
 
@@ -79,11 +79,11 @@ public class PersonenCommandController {
                                     summary = "Full request") }))
 
     @PutMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> saveOrUpdateIdempotent(@Valid @RequestBody PersonDTO dto)  throws PersonenServiceException{
+    public void saveOrUpdateIdempotent(@Valid @RequestBody PersonDTO dto) {
 
             PersonInsertedEvent event = PersonInsertedEvent.builder().dto(dto).build();
             adapter.handle(event);
-            return ResponseEntity.ok().build();
+
 
 
     }

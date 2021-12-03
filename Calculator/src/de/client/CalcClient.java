@@ -5,6 +5,7 @@ import de.math.Calculator;
 public class CalcClient {
     private final Calculator calculator;
 
+
     public CalcClient(final Calculator calculator) {
         this.calculator = calculator;
     }

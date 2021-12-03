@@ -9,6 +9,7 @@ import de.db.webapp.controllers.mappers.PersonDTOMapper;
 import de.db.webapp.services.PersonenService;
 import de.db.webapp.services.PersonenServiceException;
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class PersonenAdapterImpl implements PersonenAdapter {
     private final PersonenService service;
     private final PersonDTOMapper mapper;
 
+    @Async
     @Override
     public void handle(PersonInsertedEvent event) {
         try {
@@ -32,6 +34,7 @@ public class PersonenAdapterImpl implements PersonenAdapter {
         }
     }
 
+    @Async
     @Override
     public void handle(PersonUpdatedEvent event) {
         try {
@@ -43,6 +46,7 @@ public class PersonenAdapterImpl implements PersonenAdapter {
         }
     }
 
+    @Async
     @Override
     public void handle(PersonDeletedEvent event) {
         try {
