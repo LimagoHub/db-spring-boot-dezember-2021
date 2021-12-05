@@ -5,9 +5,14 @@ import de.db.webapp.services.PersonenService;
 import de.db.webapp.services.PersonenServiceException;
 import de.db.webapp.services.mappers.PersonMapper;
 import de.db.webapp.services.models.Person;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 
 public class PersonenServiceImpl implements PersonenService {
@@ -94,10 +99,39 @@ public class PersonenServiceImpl implements PersonenService {
     @Override
     public Iterable<Person> findeAlle() throws PersonenServiceException {
         try {
+
+//            List<Future<Integer>> liste = new ArrayList<>();
+//            for (int i = 0; i < 10; i++) {
+//                liste.add(sinnDesLebens());
+//            }
+//
+//            liste.forEach(f->System.out.println(convert(f)));
+//
             return mapper.convert(repo.findAll());
         } catch (RuntimeException e) {
             //log.error("Upps {}", e.getMessage(), e);
             throw new PersonenServiceException("Upps", e);
         }
     }
+
+//    private int convert(Future<Integer> f) {
+//        try {
+//            return f.get();
+//        } catch (Exception e) {
+//            return 0;
+//        }
+//    }
+//
+//    @Async
+//    public Future<Integer> sinnDesLebens() {
+//        int result;
+//        try {
+//            Thread.sleep(1000);
+//            result = 42;
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//            result = 0;
+//        }
+//        return new AsyncResult<Integer>(result);
+//    }
 }

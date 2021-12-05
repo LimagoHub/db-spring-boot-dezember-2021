@@ -1,6 +1,7 @@
 package de.db.webapp;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -11,7 +12,7 @@ public class FooImpl {
 
     private final List<String> foos;
 
-    public FooImpl(List<String> foos) {
+    public FooImpl(@Qualifier("foo") List<String> foos) {
         this.foos = foos;
     }
 

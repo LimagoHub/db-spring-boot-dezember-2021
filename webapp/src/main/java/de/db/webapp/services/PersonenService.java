@@ -11,4 +11,5 @@ public interface PersonenService {
     boolean loeschen(String id) throws PersonenServiceException;
     Optional<Person> findePersonNachId(String id)throws PersonenServiceException;
     Iterable<Person> findeAlle() throws PersonenServiceException;
+
 }
